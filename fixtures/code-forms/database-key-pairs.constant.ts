@@ -1,0 +1,7 @@
+export const CONNECTION_KEY = {
+  HOST: 'HOST',
+  PORT: 'PORT',
+  USERNAME: 'USERNAME',
+  PASSWORD: 'PASSWORD',
+  DATABASE: 'DATABASE',
+} as const;

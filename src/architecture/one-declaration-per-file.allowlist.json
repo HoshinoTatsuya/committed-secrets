@@ -1,0 +1,30 @@
+{
+  "src/scanner/fixture-list.ts": {
+    "count": 3,
+    "reason": "MIN_REASON_LENGTH и isDeliveryFile — условия, по которым loadFixtures судит записи перечня фикстур (длина причины, файл поставки не освобождается); правила перечня держатся в одном месте"
+  },
+  "src/scanner/known-token-shapes.constant.ts": {
+    "count": 3,
+    "reason": "KNOWN_TOKEN_SHAPES, PGP_PRIVATE и AUTH_SCHEME_VALUE — правила распознавания секрета по форме значения (префикс токена, блок PGP, схема заголовка авторизации); одна таблица, сверяемая с корпусом целиком"
+  },
+  "src/scanner/load-config.ts": {
+    "count": 2,
+    "reason": "CONFIG_NAME — имя файла, который читает и проверяет loadConfig; имя и разбор конфигурации обязаны меняться вместе (сообщения отказа loadConfig называют это имя)"
+  },
+  "src/scanner/run-gate.ts": {
+    "count": 4,
+    "reason": "GateOutput — порт вывода runGate (stdout/stderr), kindOf и judge — шаги самой проверки; вне гейта они не вызываются"
+  },
+  "src/scanner/secret-key.ts": {
+    "count": 3,
+    "reason": "wordsOf и namesSecret — шаги isSecretKey (разбиение имени ключа на слова и сверка слов со словарём), экспортируются для правил команд и значений, которые судят те же слова"
+  },
+  "src/scanner/secret-rules.ts": {
+    "count": 21,
+    "reason": "таблица регулярных выражений и словарей распознавания, перенесённая из прежней реализации один к одному и сверяемая с корпусом целиком; составные образцы собираются из общих частей W, KEY и BT"
+  },
+  "src/scanner/secret-value.ts": {
+    "count": 3,
+    "reason": "literalParts, isPlaceholder и isLiteralSecret — три шага одного решения «значение — литеральный секрет»: литералы значения, отсев заглушек, итог по ним"
+  }
+}

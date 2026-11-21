@@ -1,0 +1,11 @@
+# gitleaks: this package detects committed secrets. Its specs and fixtures deliberately
+# contain secret-shaped strings (synthetic values) to prove what is and is not reported.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "synthetic secret-shaped test data of the scanner itself"
+paths = [
+  '''^fixtures/''',
+  '''^src/scanner/[^/]+\.spec\.ts$''',
+]

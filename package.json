@@ -1,0 +1,75 @@
+{
+  "name": "@hoshinotatsuya/committed-secrets",
+  "version": "0.6.3",
+  "description": "Gate that keeps literal secrets out of committed files: keys of any shape, command lines, base64 credentials, known token formats and URLs with passwords, for CI, commit hooks and history audits; values are never printed.",
+  "keywords": [
+    "secrets",
+    "secret-detection",
+    "security",
+    "git",
+    "pre-commit",
+    "ci",
+    "credentials",
+    "leak",
+    "sarif",
+    "gitlab"
+  ],
+  "license": "MIT",
+  "author": "Hoshino_Tatsuya",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HoshinoTatsuya/committed-secrets.git"
+  },
+  "homepage": "https://github.com/HoshinoTatsuya/committed-secrets#readme",
+  "bugs": {
+    "url": "https://github.com/HoshinoTatsuya/committed-secrets/issues"
+  },
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "README.ru.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "packageManager": "pnpm@12.4.1",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=24.0.0",
+      "onFail": "error"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check src bin",
+    "test": "pnpm run build && jest-groups --out .jest-report.json -- node_modules/.bin/jest && jest-assert-no-skipped .jest-report.json",
+    "prepublishOnly": "pnpm run typecheck && pnpm run test && pnpm run build",
+    "build": "rimraf dist && tsc -p tsconfig.build.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@hoshinotatsuya/arch-gates": "^0.12.2",
+    "@hoshinotatsuya/jest-groups": "^0.7.2",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.0.15",
+    "jest": "30.5.2",
+    "rimraf": "6.0.1",
+    "ts-jest": "29.4.5",
+    "typescript": "5.9.3"
+  },
+  "bin": {
+    "committed-secrets": "bin/committed-secrets.cjs"
+  }
+}
